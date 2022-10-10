@@ -1,0 +1,256 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\nathangilbert\\source\\repos\\SuperHeroDB2\\SuperHeroDB2\\Server\\SuperHeroDB2.Server.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\nathangilbert\\source\\repos\\SuperHeroDB2\\SuperHeroDB2\\Client\\SuperHeroDB2.Client.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nathangilbert\\source\\repos\\SuperHeroDB2\\SuperHeroDB2\\Client\\SuperHeroDB2.Client.csproj",
+        "projectName": "SuperHeroDB2.Client",
+        "projectPath": "C:\\Users\\nathangilbert\\source\\repos\\SuperHeroDB2\\SuperHeroDB2\\Client\\SuperHeroDB2.Client.csproj",
+        "packagesPath": "C:\\Users\\nathangilbert\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nathangilbert\\source\\repos\\SuperHeroDB2\\SuperHeroDB2\\Client\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\nathangilbert\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://packagesource": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\nathangilbert\\source\\repos\\SuperHeroDB2\\SuperHeroDB2\\Shared\\SuperHeroDB2.Shared.csproj": {
+                "projectPath": "C:\\Users\\nathangilbert\\source\\repos\\SuperHeroDB2\\SuperHeroDB2\\Shared\\SuperHeroDB2.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Blazorise.Bootstrap": {
+              "target": "Package",
+              "version": "[1.0.5, )"
+            },
+            "Blazorise.Charts.Trendline": {
+              "target": "Package",
+              "version": "[1.0.5, )"
+            },
+            "Blazorise.Icons.FontAwesome": {
+              "target": "Package",
+              "version": "[1.0.5, )"
+            },
+            "Microsoft.AspNetCore.Components.WebAssembly": {
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
+            "Microsoft.AspNetCore.Components.WebAssembly.DevServer": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
+            "MudBlazor": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
+              "version": "[6.0.5, 6.0.5]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.105\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "browser-wasm": {
+          "#import": []
+        }
+      }
+    },
+    "C:\\Users\\nathangilbert\\source\\repos\\SuperHeroDB2\\SuperHeroDB2\\Server\\SuperHeroDB2.Server.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nathangilbert\\source\\repos\\SuperHeroDB2\\SuperHeroDB2\\Server\\SuperHeroDB2.Server.csproj",
+        "projectName": "SuperHeroDB2.Server",
+        "projectPath": "C:\\Users\\nathangilbert\\source\\repos\\SuperHeroDB2\\SuperHeroDB2\\Server\\SuperHeroDB2.Server.csproj",
+        "packagesPath": "C:\\Users\\nathangilbert\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nathangilbert\\source\\repos\\SuperHeroDB2\\SuperHeroDB2\\Server\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\nathangilbert\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://packagesource": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\nathangilbert\\source\\repos\\SuperHeroDB2\\SuperHeroDB2\\Client\\SuperHeroDB2.Client.csproj": {
+                "projectPath": "C:\\Users\\nathangilbert\\source\\repos\\SuperHeroDB2\\SuperHeroDB2\\Client\\SuperHeroDB2.Client.csproj"
+              },
+              "C:\\Users\\nathangilbert\\source\\repos\\SuperHeroDB2\\SuperHeroDB2\\Shared\\SuperHeroDB2.Shared.csproj": {
+                "projectPath": "C:\\Users\\nathangilbert\\source\\repos\\SuperHeroDB2\\SuperHeroDB2\\Shared\\SuperHeroDB2.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Components.WebAssembly.Server": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.105\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\nathangilbert\\source\\repos\\SuperHeroDB2\\SuperHeroDB2\\Shared\\SuperHeroDB2.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nathangilbert\\source\\repos\\SuperHeroDB2\\SuperHeroDB2\\Shared\\SuperHeroDB2.Shared.csproj",
+        "projectName": "SuperHeroDB2.Shared",
+        "projectPath": "C:\\Users\\nathangilbert\\source\\repos\\SuperHeroDB2\\SuperHeroDB2\\Shared\\SuperHeroDB2.Shared.csproj",
+        "packagesPath": "C:\\Users\\nathangilbert\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nathangilbert\\source\\repos\\SuperHeroDB2\\SuperHeroDB2\\Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\nathangilbert\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://packagesource": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[10.3.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.105\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+﻿@using SuperHeroDB.Shared
+@using MudBlazor
+<div>
+    <MudCheckBox ReadOnly="@ReadOnly" @bind-Checked="@Label_Checkbox1" Label="@(ReadOnly ? "Sports" : "Instruments")"/>
+    <!--<MudCheckBox ReadOnly="@ReadOnly" @bind-Checked="@Label_Checkbox2" Label="@(ReadOnly ? "ReadOnly Checkbox 2" : "EditMode Checkbox 2")"/> -->
+</div>
+
+@if (ReadOnly == true )
+{
+    
+<MudSelect  @bind-Value="@Label_Checkbox1" Label="Sports Checkbox">
+    <MudSelectItem Value="@(false)" >Football</MudSelectItem>
+    <MudSelectItem Value="@(true)"  >Rugby</MudSelectItem>
+    <br /> 
+   <!-- <p> I like to play <strong>@Sport</strong> at the Park </p> -->
+</MudSelect>
+<br /> 
+
+ 
+ <!-- <p> I like to play <strong>@Sport</strong> at the Park </p> -->
+}
+else 
+{
+<MudSelect @bind-Value="@Label_Checkbox2" Label="Checkbox 2">
+    <MudSelectItem Value="@(false)">Piano</MudSelectItem>
+    <MudSelectItem Value="@(true)">Drums</MudSelectItem>
+  <!--  <button  @onclick="IncrementCount" @bind->Click me</button> -->
+</MudSelect> 
+}
+
+<MudSwitch @bind-Checked="@ReadOnly" Label="@(ReadOnly ? "Sports" : "Instruments")"/>
+
+
+
+<!--<button  @onclick="IncrementCount" @bind->Click me</button>-->
+
+@code {
+    public bool Label_Checkbox1 { get; set; } = true;
+    public bool Label_Checkbox2 { get; set; } = false;
+    public bool ReadOnly { get; set; } = true;
+    public string sportsMessage { get; set; } = "Initial Message";
+    public string Sport { get; set; } = "Default";
+    //public string Instru { get; set; } 
+    
+
+}

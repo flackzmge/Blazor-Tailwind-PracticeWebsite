@@ -1,0 +1,235 @@
+﻿<h3>Super Heroes</h3>
+@page "/SuperHeroes"
+@using SuperHeroDB.Shared
+@using MudBlazor
+@inject HttpClient Http
+
+
+<PageTitle>Super Hero </PageTitle>
+
+<h1>Super Heroes Table</h1>
+  <h1 class="bg-green-500 hover:text-amber-300 text-lg hover:text-2xl">Hello, world!</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+ 
+
+ 
+    <!--- 
+   <div class="mx-auto"  style="max-width: 800px;">
+    <MudExpansionPanels DisableBorders="true" Elevation="10" ;>
+    <MudExpansionPanel Text="SuperHero Table"> -->
+
+@if (heroes == null) 
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Hero Name</th>
+                <th>Area</th>
+                <th>Edit/Delete</th>
+                
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var hero in heroes)
+            {
+                <tr>
+                    <td>@hero.FirstName</td>
+                    <td>@hero.LastName</td>
+                    <td>@hero.HeroName</td>
+                    <td>@hero.Place</td>
+
+
+                    
+                    <td>
+                        
+                        <MudButton Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Send" Color="Color.Warning"@onclick="EditData">Edit</MudButton>
+                         <MudButton Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Delete" Color="Color.Error"@onclick="DeleteData">Delete</MudButton>
+                         
+                    </td>
+                    
+                     
+                </tr>
+            
+            }
+        </tbody>
+    </table>
+    
+    <button class="btn btn-primary" @onclick="AddData">Add</button>
+    } 
+    <!--
+    <MudGrid>
+    <MudItem xs="12" sm="7">
+        <MudPaper Class="pa-4">
+            <MudForm @ref="form" >
+                    <MudTextField T="string" Label="Username" Required="true" RequiredError="User name is required!"/>
+                    <MudTextField T="string" Label="Email" Required="true" RequiredError="Email is required!"/>
+                    <MudTextField T="string" Label="Password" HelperText="Choose a strong password" 
+                                  InputType="InputType.Password"
+                                  RequiredError="Password is required!"/>
+                    <MudTextField T="string"></MudTextField>
+                                  Label="Password" HelperText="Repeat the password" InputType="InputType.Password"
+                    <div class="d-flex">
+                        <MudRadioGroup T="string" Required="true" RequiredError="Account type is required!">
+                            <MudRadio Option="@("Personal")">Personal</MudRadio>
+                            <MudRadio Option="@("Professional")">Professional</MudRadio>
+                        </MudRadioGroup>
+                    </div>
+                    <div class="d-flex align-center justify-space-between mt-6">
+                        <MudCheckBox T="bool" Required="true" RequiredError="You must agree" Class="ml-n2" Label="I agree!"/>
+                        <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Register</MudButton>
+                    </div>
+            </MudForm>   
+        </MudPaper>
+        -->
+        <!--<MudPaper Class="pa-4 mt-4">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" DisableElevation="true" OnClick="@(()=>form.Validate())">Validate</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Secondary" DisableElevation="true" OnClick="@(()=>form.Reset())" Class="mx-2">Reset</MudButton>
+            <MudButton Variant="Variant.Filled" DisableElevation="true" OnClick="@(()=>form.ResetValidation())">Reset Validation</MudButton>
+        </MudPaper> 
+    </MudItem>
+    <MudItem xs="12" sm="5">
+    </MudItem>
+</MudGrid>
+-->
+
+    <!-- 
+    </MudExpansionPanel> 
+     MudExpansionPanel Text="Panel Two">
+    
+   
+         Panel Two Content
+        <!---<MudSimpleTable Dense="@dense" Hover="@hover" Bordered="@bordered" Striped="@striped" Style="overflow-x: auto;">
+    <thead>
+        <tr>
+             @foreach (var h in headings)
+            {
+                <th>@h</th>
+            }
+                
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var row in rows)
+        {
+            <tr>
+                @foreach (var x in row.Split())
+                {
+                    <td>@x</td>
+                }
+            </tr>
+        }
+    </tbody>
+</MudSimpleTable>
+<MudToolBar>
+    <MudSwitch @bind-Checked="@hover" Color="Color.Primary">Hover</MudSwitch>
+    <MudSwitch @bind-Checked="@dense" Color="Color.Secondary">Dense</MudSwitch>
+    <MudSwitch @bind-Checked="@striped" Color="Color.Tertiary">Striped</MudSwitch>
+    <MudSwitch @bind-Checked="@bordered" Color="Color.Warning">Bordered</MudSwitch>
+</MudToolBar>
+
+    </MudExpansionPanel> 
+    <MudExpansionPanel Text="Panel Three">
+        Panel Three Content
+    </MudExpansionPanel>
+</MudExpansionPanels>
+</div> -->
+<!-- 
+<EditForm Model="@model" OnValidSubmit="OnValidSubmit">
+<DataAnnotationsValidator/>
+<MudGrid>
+    <MudItem xs="12" sm="7">
+        <MudCard>
+            <MudCardContent>
+                <MudTextField Label="First name" HelperText="Max. 8 characters"
+                              @bind-Value="model.Username" For="@(() => model.Username)"/>
+                <MudTextField Label="Email" Class="mt-3"
+                              @bind-Value="model.Email" For="@(() => model.Email)"/>
+                <MudTextField Label="Password" HelperText="Choose a strong password" Class="mt-3"
+                              @bind-Value="model.Password" For="@(() => model.Password)" InputType="InputType.Password"/>
+                <MudTextField Label="Password" HelperText="Repeat the password" Class="mt-3"
+                              @bind-Value="model.Password2" For="@(() => model.Password2)" InputType="InputType.Password"/>
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Register</MudButton>
+            </MudCardActions>
+        </MudCard>
+    </MudItem>
+    <MudItem xs="12" sm="5">
+        <MudPaper Class="pa-4 mud-height-full">
+            <MudText Typo="Typo.subtitle2">Validation Summary</MudText>
+            @if (success)
+            {
+                <MudText Color="Color.Success">Success</MudText>
+            }
+            else
+            {
+                <MudText Color="@Color.Error">
+                    <ValidationSummary />
+                </MudText>
+            }
+        </MudPaper>
+    </MudItem>
+    <MudItem xs="12">
+        <MudText Typo="Typo.body2" Align="Align.Center">
+            Fill out the form correctly to see the success message.
+        </MudText>
+    </MudItem>
+</MudGrid>
+</EditForm>
+-->
+
+
+ 
+
+@code {
+
+    List<SuperHero> heroes = new List<SuperHero>();
+    private string currentHeading = "Initial heading";
+    private string? newHeading;
+    private string checkedMessage = "Not changed yet";
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        var httpClient = new HttpClient();
+        httpClient.BaseAddress = new Uri("https://localhost:7284");
+
+        heroes = await httpClient.GetFromJsonAsync<List<SuperHero>>("api/SuperHero");
+
+
+
+    }
+
+    private async Task EditData()
+    {
+        currentHeading = $"{newHeading}!!!";
+    }
+
+    private async Task DeleteData()
+    {
+        checkedMessage = $"Last changed at {DateTime.Now}";
+    }
+
+
+
+    private async Task AddData()
+    {
+        currentHeading = $"{newHeading}!!!";
+    }
+
+    
+    
+}
+
+
+
+

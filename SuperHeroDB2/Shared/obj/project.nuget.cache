@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "5ZxV8rFQS3/dD9plogph+ZDbE5jKL6ZpTSvi0l2LxI5L9oNY9J5lVB3hrmmrpuHCEALFv4YYM4qvy8+CHkKy8g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\nathangilbert\\source\\repos\\SuperHeroDB2\\SuperHeroDB2\\Shared\\SuperHeroDB2.Shared.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\nathangilbert\\.nuget\\packages\\fluentvalidation\\10.3.6\\fluentvalidation.10.3.6.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,45 @@
+﻿@page "/VillainRazor"
+@using MudBlazor
+@inject IVillainService VillainService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Villain</PageTitle>
+
+<h3>Villain Table</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Hero Name</th>
+            <th>Place</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var hero in VillainService.Villains)
+        {
+            <tr>
+                <td>@hero.FirstName</td>
+                <td>@hero.LastName</td>
+                <td>@hero.VillainName</td>
+                <td>@hero.Place</td>
+                <td>
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await VillainService.GetVillains();
+    }
+
+
+  
+}

@@ -1,0 +1,16 @@
+﻿@page "/Image"
+@using MudBlazor
+<MudButton Link="https://www.benchmark-consulting.co.uk/"
+           Target="_blank"
+           Variant="Variant.Filled"
+           EndIcon="@Icons.Custom.Uncategorized.Radioactive"
+           Color="Color.Primary"
+           Disabled=@disabled>
+    
+</MudButton>
+
+<br />
+<MudSwitch Color="Color.Primary" @bind-Checked=@(disabled) Label="Disable" />
+@code{
+    bool disabled = false;
+}

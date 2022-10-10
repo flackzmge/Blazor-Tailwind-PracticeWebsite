@@ -1,0 +1,11 @@
+C:\Users\nathangilbert\source\repos\SuperHeroDB2\SuperHeroDB2\Shared\bin\Debug\net6.0\SuperHeroDB2.Shared.deps.json
+C:\Users\nathangilbert\source\repos\SuperHeroDB2\SuperHeroDB2\Shared\bin\Debug\net6.0\SuperHeroDB2.Shared.dll
+C:\Users\nathangilbert\source\repos\SuperHeroDB2\SuperHeroDB2\Shared\bin\Debug\net6.0\ref\SuperHeroDB2.Shared.dll
+C:\Users\nathangilbert\source\repos\SuperHeroDB2\SuperHeroDB2\Shared\bin\Debug\net6.0\SuperHeroDB2.Shared.pdb
+C:\Users\nathangilbert\source\repos\SuperHeroDB2\SuperHeroDB2\Shared\obj\Debug\net6.0\SuperHeroDB2.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nathangilbert\source\repos\SuperHeroDB2\SuperHeroDB2\Shared\obj\Debug\net6.0\SuperHeroDB2.Shared.AssemblyInfoInputs.cache
+C:\Users\nathangilbert\source\repos\SuperHeroDB2\SuperHeroDB2\Shared\obj\Debug\net6.0\SuperHeroDB2.Shared.AssemblyInfo.cs
+C:\Users\nathangilbert\source\repos\SuperHeroDB2\SuperHeroDB2\Shared\obj\Debug\net6.0\SuperHeroDB2.Shared.csproj.CoreCompileInputs.cache
+C:\Users\nathangilbert\source\repos\SuperHeroDB2\SuperHeroDB2\Shared\obj\Debug\net6.0\SuperHeroDB2.Shared.dll
+C:\Users\nathangilbert\source\repos\SuperHeroDB2\SuperHeroDB2\Shared\obj\Debug\net6.0\ref\SuperHeroDB2.Shared.dll
+C:\Users\nathangilbert\source\repos\SuperHeroDB2\SuperHeroDB2\Shared\obj\Debug\net6.0\SuperHeroDB2.Shared.pdb

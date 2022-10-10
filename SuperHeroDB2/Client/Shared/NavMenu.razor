@@ -1,0 +1,132 @@
+﻿<!--
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">SuperHeroDB</a>
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <nav class="flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="counter">
+                <span class="oi oi-plus" aria-hidden="true"></span> Counter
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="fetchdata">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="SuperHeroes">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Super Hero
+            </NavLink>
+        </div>
+    </nav>
+</div>
+
+<MudAppBar Color="Color.Primary" Fixed="false">
+    <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" />
+    <MudSpacer />
+    <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" />
+    <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <nav class="flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="counter">
+                <span class="oi oi-plus" aria-hidden="true"></span> Counter
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="fetchdata">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="SuperHeroes">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Super Hero
+            </NavLink>
+        </div>
+    </nav>
+</div>
+</MudAppBar> 
+-->
+
+<ul class="flex justify-between mt-6 ml-8 text-white uppercase tracking-wider">
+    <li>
+        <NavLink class="mr-6 pb-2 border-b-4 border-purple-700 hover:border-green-400" href="" Match="NavLinkMatch.All">
+            Home
+        </NavLink>
+    </li>
+    <li>
+        <NavLink class="mr-6 pb-2 border-b-4 border-purple-700 hover:border-green-400" href="counter">
+            Counter
+        </NavLink>
+    </li>
+    <li>
+        <NavLink class="mr-6 pb-2 border-b-4 border-purple-700 hover:border-green-400" href="fetchdata">
+            Fetch data
+        </NavLink>
+    </li>
+    <li>
+        <NavLink class="mr-6 pb-2 border-b-4 border-purple-700 hover:border-green-400" href="SuperHeroes">
+            Super Hero
+        </NavLink>
+    </li>
+
+    <li>
+        <NavLink class="mr-6 pb-2 border-b-4 border-purple-700 hover:border-green-400" href="VillainRazor">
+            Villain
+        </NavLink>
+    </li>
+
+    <li>
+        <NavLink class="mr-6 pb-2 border-b-4 border-purple-700 hover:border-green-400" href="Chart3">
+            Chart
+        </NavLink>
+    </li>
+
+     <li>
+        <NavLink class="mr-6 pb-2 border-b-4 border-purple-700 hover:border-green-400" href="Chart4">
+            String Chart
+        </NavLink>
+    </li>
+
+    <li>
+        <NavLink class="mr-6 pb-2 border-b-4 border-purple-700 hover:border-green-400" href="graph">
+            graph
+        </NavLink>
+    </li>
+
+
+    <li>
+        <NavLink class="mr-6 pb-2 border-b-4 border-purple-700 hover:border-green-400" href="hello">
+            hello
+        </NavLink>
+    </li>
+</ul>
+
+
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

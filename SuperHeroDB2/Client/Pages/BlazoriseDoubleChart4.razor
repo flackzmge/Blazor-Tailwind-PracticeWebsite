@@ -1,0 +1,386 @@
+﻿@page "/DoubleChart4"
+@using Blazorise
+@using Blazorise.Charts
+@using Blazorise.Charts.Trendline
+@using System.Text
+@using System.IO
+@inject IJSRuntime JS
+
+
+<div class="flex flex-col justify-center items-center">
+
+    <!-- Import from Excel-->
+ 
+ <Field ColumnSize="ColumnSize.Is4.OnDesktop"> <TextEdit   Placeholder="Import Excel Data"  TextChanged="@( (string s) => getCurvePointsFromExcelstring(s) )" Value="@excelData" ValueExpression="@( () => excelData )" /> </Field>
+ 
+ <!-- Export as CSV file-->   
+<Button  Size="Size.Small" Clicked="@Csv" Color="Color.Danger">Export Excel</Button>
+
+<!-- X and Y input for Graph-->
+<Validations @ref="validations" Mode="ValidationMode.Manual">
+    <Validation Validator="@ValidationRule.IsNotEmpty">
+         <Field ColumnSize="ColumnSize.Is2.OnDesktop">
+            <TextEdit    @bind-Text="@sector"  Placeholder="x - axis" />
+        </Field>
+    </Validation>
+    <Validation Validator="@ValidationRule.IsNotEmpty">
+         <Field ColumnSize="ColumnSize.Is2.OnDesktop"> 
+            <TextEdit @bind-Text="@count" Placeholder="y-axis" />
+        </Field>
+    </Validation>
+    <Button  Size="Size.Small" Color="Color.Primary" Clicked="@Submit">Submit</Button>
+
+</Validations>
+</div>
+
+
+
+
+
+
+<!-- Create Graph-->
+<LineChart @ref="lineChart" Type="ChartType.Line" TItem="WatcherEvent" Options="@lineChartOptions" Clicked="@ProcessGraphClicks"  />
+
+<!-- Create Table-->
+<Table Bordered Resizable ResizeMode="TableResizeMode.Columns" FixedHeaderTableHeight="100px" Responsive="true" Narrow="true" >
+    <TableHeader>
+        <TableRow>
+            
+            <TableHeaderCell>x-axis</TableHeaderCell>
+            <TableHeaderCell>y-axis</TableHeaderCell>
+            <TableHeaderCell>Edit</TableHeaderCell>
+            <TableHeaderCell>Delete</TableHeaderCell>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        
+        @foreach (var rows in DataSet)
+        {
+            <TableRow>
+                <TableRowCell>@rows.Sector</TableRowCell>
+                <TableRowCell>@rows.Count</TableRowCell>
+                <TableRowCell> <Button @onclick="() => EditData(rows)" Color="Color.Danger">Edit</Button></TableRowCell>
+                <TableRowCell> <Button @onclick="() => Delete(rows) " Color="Color.Danger">Delete</Button></TableRowCell>
+            </TableRow>
+        }
+
+    </TableBody>
+</Table>
+
+<!--<Button Color="Color.Primary" Clicked="@ShowInfoMessage">Hello</Button> -->
+
+
+ 
+<MessageAlert />
+
+<Modal @ref="modalRef">
+    <ModalContent Centered>
+        <ModalHeader>
+            <ModalTitle>Edit Data Points</ModalTitle>
+            <CloseButton />
+        </ModalHeader>
+        <ModalBody>
+            <Field>
+                <FieldLabel>X-axis</FieldLabel>
+                <TextEdit @bind-Text="@X" />
+            </Field>
+            <Field>
+                <FieldLabel>Y-axis</FieldLabel>
+                <TextEdit @bind-Text="@Y" />
+            </Field>
+            <Field>
+                <!--<Icon Size="x4" Name="IconName.Delete" Clicked="@DeleteModal" /> -->
+            </Field>
+        </ModalBody>
+        <ModalFooter>
+           <!--- <Button Color="Color.Secondary" Clicked="@HideModal">Close</Button> 
+           <Button Color="Color.Secondary" Clicked="@DeleteModal">Delete</Button>-->
+           <Icon IconSize="IconSize.x4" Name="IconName.Delete" Clicked="@DeleteModal" />
+            <Button Color="Color.Primary" Clicked="@HideModal">Save Changes</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>
+
+
+@code {
+    Validations validations;
+
+    [Inject] IMessageService MessageService { get; set; }
+
+    [Inject] INotificationService NotificationService { get; set; }
+
+    Task OnButtonClicked()
+    {
+        return NotificationService.Info("Hello world!");
+    }
+
+    Task ProcessGraphClicks( ChartMouseEventArgs e)
+    {
+        //var model = e.Index;
+        //Console.WriteLine( $"helo{model}-");
+
+        //1. Get X and Y
+        Y = DataSet[e.Index].Count.ToString();
+
+        X = DataSet[e.Index].Sector;
+
+
+
+        CurrentindexPoint = e.Index;
+
+
+        
+
+        return modalRef.Show();
+    }
+
+        Task EditData(WatcherEvent row)
+    {
+       //1. Get X and Y
+        Y = row.Count.ToString();
+
+        X = row.Sector;
+
+
+       
+        //CurrentindexPoint = Da;
+
+
+        
+
+        return modalRef.Show();
+    }
+
+    async Task Submit()
+    {
+        if (await validations.ValidateAll())
+        {
+
+            await lineChart.Clear();
+            DataSet.Add(new WatcherEvent { ID = DataSetID, Sector = sector, Count = Double.Parse(count) });
+            //DataSet.Add(new WatcherEvent { ID = DataSetID, Sector = sector, Count = Int32.Parse(count) });
+            await lineChart.AddDatasetsAndUpdate(GetSingleLineChartDataset(DataSet));
+             //string[] Labels = { "Red", "Blue", "Yellow", "Green", "Purple", "Orange" };
+             //lineChart.AddLabels()
+            DataSetID++;
+
+
+
+
+        }
+    }
+
+    string X = "";
+    string Y = "";
+
+    private LineChart<WatcherEvent> lineChart;
+
+    LineChartOptions lineChartOptions = new()
+        {
+            Parsing = new ChartParsing
+            {
+                XAxisKey = "sector",
+                YAxisKey = "count",
+                
+            },
+
+             Scales = new ChartScales { X = new ChartAxis {Type = "linear", Title = new ChartScaleTitle {Display = true ,Text = "Double Graph"} }, Y = new ChartAxis {  Title = new ChartScaleTitle {Display = true ,Text = "Y title"} } },
+          
+          
+          //Scales = new ChartScales { X = new ChartAxis { Type = "linear" } },
+
+          //Scales = new ChartAxis { A = new ChartAxisScaleLabel { LabelString = "linear" } }
+
+          //Scales = new ChartScales { X = new ChartAxis { Type = "A"} },
+          
+          //AspectRatio = new AspectRatio {A },
+          
+          
+          
+        };
+
+    private List<string> backgroundColors = new() { ChartColor.FromRgba(255, 99, 132, 0.2f), ChartColor.FromRgba(54, 162, 235, 0.2f), ChartColor.FromRgba(255, 206, 86, 0.2f), ChartColor.FromRgba(75, 192, 192, 0.2f), ChartColor.FromRgba(153, 102, 255, 0.2f), ChartColor.FromRgba(255, 159, 64, 0.2f) };
+    private List<string> borderColors = new() { ChartColor.FromRgba(255, 99, 132, 1f), ChartColor.FromRgba(54, 162, 235, 1f), ChartColor.FromRgba(255, 206, 86, 1f), ChartColor.FromRgba(75, 192, 192, 1f), ChartColor.FromRgba(153, 102, 255, 1f), ChartColor.FromRgba(255, 159, 64, 1f) };
+
+    private bool isAlreadyInitialised;
+
+   
+
+
+    private List<WatcherEvent> DataSet = new List<WatcherEvent>();
+    int DataSetID = 0;
+
+
+
+    [Parameter]
+    public string sector { get; set; }
+
+    [Parameter]
+    public string count { get; set; }
+
+    public class WatcherEvent
+    {
+        public int ID { get; set; }
+
+       // public string Sector { get; set; }
+       public string Sector { get; set; }
+
+        public double Count { get; set; }
+
+        public DateTime Date { get; } = DateTime.Now;
+    }
+
+
+
+    private LineChartDataset<WatcherEvent> GetSingleLineChartDataset(List<WatcherEvent> DataSet)
+    {
+       
+        return new()
+            {
+                Label = "Graph",
+                Data = DataSet,
+                BackgroundColor = backgroundColors[0], // line chart can only have one color
+                BorderColor = borderColors[0],
+                Fill = true,
+                XAxisID = "X Test",
+                YAxisID = "Y Test",
+                PointRadius = 3,
+                BorderWidth = 1,
+                PointBorderColor = Enumerable.Repeat(borderColors.First(), 6).ToList(),
+                //CubicInterpolationMode = "monotone",
+            };
+    }
+
+
+
+    private async Task Delete(WatcherEvent row)
+    {
+
+
+        DataSet.Remove(row);
+        await lineChart.Clear();
+    
+        await lineChart.AddDatasetsAndUpdate(GetSingleLineChartDataset(DataSet));
+
+
+    }
+
+    private async Task Edit(WatcherEvent row)
+    {
+
+
+        DataSet.Remove(row);
+        await lineChart.Clear();
+        await lineChart.AddDatasetsAndUpdate(GetSingleLineChartDataset(DataSet));
+
+
+    }
+
+    public string excelData { get; set; }
+
+    public List<WatcherEvent> getCurvePointsFromExcelstring(string excelData)
+    {
+        List<WatcherEvent> points = new List<WatcherEvent>();
+        
+        //If (excelData field is empty then return empty points list)
+        if (string.IsNullOrWhiteSpace(excelData)) return points;
+
+        //Each Excel Row pasted will be separated by a space and so use Split to create a rows array with each Excel row in a separate array element
+        string[] rows = excelData.Split(" ".ToCharArray());
+        
+        //Loop through each Excel Row
+        foreach(string rowData in rows)
+        {
+            //Each Excel data row contains two columns separated by a tab character. Use Split to separte each column out into the columns array 
+            char[] delimiters = new char[] { '\t' };
+            string[] columns = rowData.Split(delimiters);
+
+            //If exactly two columns in the datarow, then add this row to DataSet and update Chart
+            if (columns.Length == 2)
+            {
+               
+ 
+               //Add data row to Dataset
+               DataSet.Add(new WatcherEvent { ID = DataSetID, Sector = columns[0], Count = Double.Parse(columns[1])}); 
+               
+               //Clear chart of all data in Chart 
+               lineChart.Clear();
+               
+               //Add Updated Dataset to chart and re-display chart
+               lineChart.AddDatasetsAndUpdate(GetSingleLineChartDataset(DataSet));
+               
+               //Increment Unique Chart ID
+               DataSetID++;
+            }
+        
+        }
+     
+        return points;
+    }
+
+    public string DataValue { get; set; }
+
+    private void SetExcelData(string value)
+    {
+        DataValue = value;
+    }
+
+
+    int CurrentindexPoint = 0;
+// reference to the modal component
+    public Modal modalRef;
+
+    public Task ShowModal()
+    {
+   
+        return modalRef.Show();
+       
+    }
+
+    public Task HideModal()
+    {
+        lineChart.Clear(); 
+        DataSet[CurrentindexPoint].Sector = X;
+        DataSet[CurrentindexPoint].Count = Double.Parse(Y);
+        lineChart.AddDatasetsAndUpdate(GetSingleLineChartDataset(DataSet));
+        return modalRef.Hide();
+        
+    }
+
+    public Task DeleteModal()
+    {
+       
+        DataSet.Remove(DataSet[CurrentindexPoint]);
+        lineChart.Clear();
+        lineChart.AddDatasetsAndUpdate(GetSingleLineChartDataset(DataSet));
+        return modalRef.Hide();
+        
+    }
+
+    public async Task Csv()
+    {
+        // Instance of String builder created to accomodate expansions to strings to strings
+        //builder used to append the data into the excel file 
+        var builder = new StringBuilder();
+        // Allows us to store in current memory as opposed to the server 
+        var stream = new System.IO.MemoryStream();
+        //builder.AppendLine("Id,Username");
+         // Loop through dataset and append in excel file
+        foreach (var rows in DataSet)
+        {
+            builder.AppendLine($"{rows.Sector},{rows.Count}");
+        }
+        // turning the data from graph into string 
+        byte[] data = System.Text.Encoding.UTF8.GetBytes(builder.ToString());
+        stream = new System.IO.MemoryStream(data); 
+        // Creating a csv file called Graph
+        var fileName = "Graph.csv";
+        // Turning Data from C sharp to JS
+        using var streamRef = new DotNetStreamReference(stream: stream);
+        // Downloading csv file 
+        await JS.InvokeVoidAsync("downloadFileFromStream", fileName, streamRef);
+
+    
+    }
+
+}

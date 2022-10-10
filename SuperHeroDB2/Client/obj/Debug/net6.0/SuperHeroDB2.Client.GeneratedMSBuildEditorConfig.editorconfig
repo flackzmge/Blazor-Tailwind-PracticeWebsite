@@ -1,0 +1,115 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = browser
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = true
+build_property.IncludeAllContentForSelfExtract = 
+build_property.RootNamespace = SuperHeroDB2.Client
+build_property.RootNamespace = SuperHeroDB2.Client
+build_property.ProjectDir = C:\Users\nathangilbert\source\repos\SuperHeroDB2\SuperHeroDB2\Client\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\nathangilbert\source\repos\SuperHeroDB2\SuperHeroDB2\Client
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/Pages/BlazorChart1.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxhem9yQ2hhcnQxLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/Pages/BlazoriseBarChart1.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxhem9yaXNlQmFyQ2hhcnQxLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/Pages/BlazoriseBarChart2.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxhem9yaXNlQmFyQ2hhcnQyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/Pages/BlazoriseChart1.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxhem9yaXNlQ2hhcnQxLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/Pages/BlazoriseChart2.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxhem9yaXNlQ2hhcnQyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/Pages/BlazoriseChart3.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxhem9yaXNlQ2hhcnQzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/Pages/BlazoriseChart4.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxhem9yaXNlQ2hhcnQ0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/Pages/BlazoriseDoubleChart4.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxhem9yaXNlRG91YmxlQ2hhcnQ0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/Pages/CheckboxandSwitch.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hlY2tib3hhbmRTd2l0Y2gucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/Pages/Dialog.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlhbG9nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/Pages/Form1.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybTEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/Pages/Form2.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybTIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/Pages/ImageButton.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW1hZ2VCdXR0b24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/Pages/SuperHeroes.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VwZXJIZXJvZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/Pages/TextandListBox.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGV4dGFuZExpc3RCb3gucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/Pages/Villain.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlsbGFpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-fcwjrqqpit
+
+[C:/Users/nathangilbert/source/repos/SuperHeroDB2/SuperHeroDB2/Client/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-wbr6lv2tc0

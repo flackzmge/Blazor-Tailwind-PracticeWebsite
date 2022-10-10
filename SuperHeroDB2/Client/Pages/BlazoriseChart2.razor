@@ -1,0 +1,175 @@
+﻿@page "/Chart1"
+@using Blazorise
+@using Blazorise.Charts
+@using Blazorise.Charts.Trendline
+
+<Validations @ref="validations" Mode="ValidationMode.Manual">
+    <Validation Validator="@ValidationRule.IsNotEmpty">
+        <Field>
+            <TextEdit    @bind-Text="@sector"  Placeholder="x - axis" />
+            
+        </Field>
+    </Validation>
+    <Validation Validator="@ValidationRule.IsNotEmpty">
+        <Field>
+            <TextEdit @bind-Text="@count" Placeholder="y-axis" />
+        </Field>
+    </Validation>
+    <Button Color="Color.Primary" Clicked="@Submit">Submit</Button>
+</Validations>
+
+<LineChart @ref="lineChart" TItem="WatcherEvent" Options="@lineChartOptions" />
+
+<Table Bordered Resizable ResizeMode="TableResizeMode.Columns">
+    <TableHeader>
+        <TableRow>
+            
+            <TableHeaderCell>x-axis</TableHeaderCell>
+            <TableHeaderCell>y-axis</TableHeaderCell>
+            <TableHeaderCell>Delete</TableHeaderCell>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        
+        @foreach (var rows in DataSet)
+        {
+             <TableRow>
+            <TableRowCell>@rows.Sector</TableRowCell>
+            <TableRowCell>@rows.Count</TableRowCell>
+            <TableRowCell> <Button @onclick="() => Delete(rows) " Color="Color.Danger">Delete</Button></TableRowCell>
+             </TableRow>
+        }
+     
+    </TableBody>
+</Table>
+@code {
+
+    Validations validations;
+
+    async Task Submit()
+    {
+        if (await validations.ValidateAll())
+        {
+
+            await lineChart.Clear();
+            DataSet.Add(new WatcherEvent { ID = DataSetID, Sector = sector, Count = Int32.Parse(count) });
+            await lineChart.AddDatasetsAndUpdate(  GetSingleLineChartDataset(DataSet));
+            DataSetID++;
+
+
+
+
+        } 
+    }
+
+    private LineChart<WatcherEvent> lineChart;
+
+    LineChartOptions lineChartOptions = new()
+    {
+        Parsing = new ChartParsing
+        {
+            XAxisKey = "sector",
+            YAxisKey = "count",
+        }
+    };
+
+    private List<string> backgroundColors = new() { ChartColor.FromRgba( 255, 99, 132, 0.2f ), ChartColor.FromRgba( 54, 162, 235, 0.2f ), ChartColor.FromRgba( 255, 206, 86, 0.2f ), ChartColor.FromRgba( 75, 192, 192, 0.2f ), ChartColor.FromRgba( 153, 102, 255, 0.2f ), ChartColor.FromRgba( 255, 159, 64, 0.2f ) };
+    private List<string> borderColors = new() { ChartColor.FromRgba( 255, 99, 132, 1f ), ChartColor.FromRgba( 54, 162, 235, 1f ), ChartColor.FromRgba( 255, 206, 86, 1f ), ChartColor.FromRgba( 75, 192, 192, 1f ), ChartColor.FromRgba( 153, 102, 255, 1f ), ChartColor.FromRgba( 255, 159, 64, 1f ) };
+
+    private bool isAlreadyInitialised;
+
+    private List<WatcherEvent> DataSet = new List<WatcherEvent>();
+    int DataSetID = 0;
+
+    //string sector; 
+    //string count; 
+
+    [Parameter]
+    public string sector { get; set; }
+
+    [Parameter]
+    public string count { get; set; }
+
+    public class WatcherEvent
+    {
+        public int ID { get; set; }
+
+        public string Sector { get; set; }
+
+        public int Count { get; set; }
+
+        public DateTime Date { get; } = DateTime.Now;
+    }
+
+
+
+    protected override async Task OnAfterRenderAsync( bool firstRender )
+    {
+        if ( !isAlreadyInitialised )
+        {
+            isAlreadyInitialised = true;
+
+            await lineChart.Clear();
+            DataSet = new List<WatcherEvent>(); 
+            //await lineChart.AddDataSet( GetLineChartDataset() );
+        }
+    }
+
+    private LineChartDataset<WatcherEvent> GetLineChartDataset()
+    {
+        return new()
+        {
+            Label = "Graph",
+            Data = new List<WatcherEvent>
+            {
+                new WatcherEvent { ID = 1, Sector = "A", Count = 300 },
+                new WatcherEvent { ID = 2, Sector = "B", Count = 1400 },
+                new WatcherEvent { ID = 3, Sector = "C", Count = 400 },
+                new WatcherEvent { ID = 4, Sector = "D", Count = 50 },
+                new WatcherEvent { ID = 5, Sector = "EoE", Count = 1200 },
+                 new WatcherEvent { ID = 6,  Sector = "F", Count = 1500 },
+            },
+            BackgroundColor = backgroundColors[0], // line chart can only have one color
+            BorderColor = borderColors[0],
+            Fill = true,
+            PointRadius = 3,
+            BorderWidth = 1,
+            PointBorderColor = Enumerable.Repeat( borderColors.First(), 6 ).ToList(),
+            CubicInterpolationMode = "monotone",
+        };
+    }
+
+
+
+    private LineChartDataset<WatcherEvent> GetSingleLineChartDataset(List<WatcherEvent> DataSet)
+    {
+        return new()
+        {
+            Label = "Graph2",
+            Data = DataSet ,
+            BackgroundColor = backgroundColors[0], // line chart can only have one color
+            BorderColor = borderColors[0],
+            Fill = true,
+            PointRadius = 3,
+            BorderWidth = 1,
+            PointBorderColor = Enumerable.Repeat( borderColors.First(), 6 ).ToList(),
+            CubicInterpolationMode = "monotone",
+        };
+    }
+
+
+
+    private async Task Delete(WatcherEvent row)
+    {
+        
+ 
+        DataSet.Remove(row);
+        await  lineChart.Clear();
+        await lineChart.AddDatasetsAndUpdate(  GetSingleLineChartDataset(DataSet));
+       
+
+    }
+    // Severity	Code	Description	Project	File	Line	Suppression State
+//Error (active)	CS1503	Argument 2: cannot convert from 'int' to 'Microsoft.AspNetCore.Components.EventCallback'	SuperHeroDB2.Client	c:\Users\nathangilbert\source\repos\SuperHeroDB2\SuperHeroDB2\Client\Pages\BlazoriseChart2.razor	38	
+
+}

@@ -1,0 +1,128 @@
+﻿@page "/fetchdata"
+@using Blazorise
+@using Blazorise.Charts
+@using Blazorise.Charts.Trendline
+@using System.Text
+@using System.IO
+@inject IJSRuntime JS
+
+<Select TValue="string" SelectedValue="@selectedValue" SelectedValueChanged="@ShowInfoMessage">
+    @foreach (var s in stringGraph)
+        {
+        <SelectItem  Value="@s">@s</SelectItem>
+        
+        }
+
+    @foreach (var i in intGraph)
+        {
+        <SelectItem  Value="@i">@i</SelectItem>
+        
+        }
+
+    @foreach (var d in doubleGraph)
+        {
+        <SelectItem  Value="@d">@d</SelectItem>
+        
+        }
+
+</Select>
+
+<br>
+<br>
+<!-- 
+@if (@selectedValue == null)
+{
+    <p>Error</p>
+}
+else
+{
+    @selectedValue
+}
+-->
+
+@foreach (var s in stringGraph)
+  
+        {
+            @if (@selectedValue == s)
+            {
+                <BlazoriseChart3  X_Title="@selectedValue" ButtonText="@selectedValue" >  </BlazoriseChart3>
+            }
+            
+        }
+
+@foreach (var i in intGraph)
+  
+        {
+            @if (@selectedValue == i)
+            {
+                <BlazoriseChart4></BlazoriseChart4>
+            }
+            
+        }
+
+@foreach (var d in doubleGraph)
+  
+        {
+            @if (@selectedValue == d)
+            {
+                <BlazoriseDoubleChart4></BlazoriseDoubleChart4>
+            }
+            
+        }
+    <!--
+<BlazoriseChart3></BlazoriseChart3>
+
+<BlazoriseChart4></BlazoriseChart4>
+<BlazoriseDoubleChart4></BlazoriseDoubleChart4>
+-->
+
+
+
+  
+<!-- Dropdown selection-->
+
+
+
+
+
+
+@code {
+    Validations validations;
+
+    [Inject] IMessageService MessageService { get; set; }
+
+    [Inject] INotificationService NotificationService { get; set; }
+
+    static string selectedValue = "MachineDirectionDimension (mm)" ;
+
+    [Parameter]
+    public static string X_Title { get; set; } 
+
+
+    async Task ShowInfoMessage(string SelectedValue)
+    {
+
+
+        
+        selectedValue = SelectedValue;
+        
+    }
+
+    private string[] stringGraph =
+    {
+        "MachineDirectionDimension (mm)", "TransverseDirectionDimension (mm)"
+    };
+
+    private string[] intGraph =
+    {
+        "Flute","NumberUp","NumberOfColours"
+    };
+
+    private string[] doubleGraph =
+    {
+        "ProcessProductionInput (sheet)", "Coated"
+    };
+
+    
+
+}

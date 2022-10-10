@@ -1,0 +1,81 @@
+﻿@using MudBlazor
+@inject IDialogService DialogService
+
+<MudSelect T="string" Label="Select Football Team" AnchorOrigin="Origin.BottomCenter">
+    <MudSelectItem Value="@("Manchester United")" />
+    <MudSelectItem Value="@("Chelsea")" />
+    <MudSelectItem Value="@("Manchester City")" />
+    <MudSelectItem Value="@("Liverpool")" />
+
+</MudSelect>
+
+<!--<MudButton Variant="Variant.Filled"  Color="Color.Warning"@onclick="favStates">Club</MudButton>-->
+
+<MudSelect T="string" Label="US States" HelperText="Pick your favorite states with keys" MultiSelection="true" @bind-Value="value" @bind-SelectedValues="options">
+    @foreach (var state in states)
+    {
+        <MudSelectItem T="string" Value="@state">@state</MudSelectItem>
+    }
+</MudSelect>
+
+<!--<MudButton Variant="Variant.Filled"  Color="Color.Warning"@onclick="favStates">States</MudButton>-->
+
+<!--<span>
+   
+    I want to visit: @string.Join(", ", options) as they are my favourite states 
+</span> -->
+<br />
+
+<MudButton @onclick="OpenDialog" Variant="Variant.Filled" Color="Color.Primary">
+    Dialog
+</MudButton> 
+
+
+
+@code {
+
+    private string value { get; set; } = "Nothing selected";
+
+
+    public IEnumerable<string> options { get; set; } = new List<string>() { "Alaska" };
+    private string Message { get; set; } = "Initial Message";
+
+
+
+    private string[] states =
+    {
+        "Alabama", "Alaska", "American Samoa", "Arizona",
+        "Arkansas", "California", "Colorado", "Connecticut",
+        "Delaware", "District of Columbia", "Federated States of Micronesia",
+        "Florida", "Georgia", "Guam", "Hawaii", "Idaho",
+        "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky",
+        "Louisiana", "Maine", "Marshall Islands", "Maryland",
+        "Massachusetts", "Michigan", "Minnesota", "Mississippi",
+        "Missouri", "Montana", "Nebraska", "Nevada",
+        "New Hampshire", "New Jersey", "New Mexico", "New York",
+        "North Carolina", "North Dakota", "Northern Mariana Islands", "Ohio",
+        "Oklahoma", "Oregon", "Palau", "Pennsylvania", "Puerto Rico",
+        "Rhode Island", "South Carolina", "South Dakota", "Tennessee",
+        "Texas", "Utah", "Vermont", "Virgin Island", "Virginia",
+        "Washington", "West Virginia", "Wisconsin", "Wyoming",
+    };
+
+    private void Data()
+    {
+        var Data = string.Join(", ", options);
+        Console.WriteLine(Data);
+
+    }
+
+    private void OpenDialog()
+    {
+       
+        var parameters = new DialogParameters();
+        parameters.Add("ContentText","I want to visit: " + string.Join(", ", options) + " as they are my favourite states");
+        parameters.Add("Color", Color.Error);
+        DialogService.Show<Dialog>("States",parameters);
+
+    }
+
+    
+}
